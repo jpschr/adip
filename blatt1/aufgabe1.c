@@ -5,7 +5,10 @@ int main(){
 int n;
 printf("Bitte eine ganze Zahl größer 1 eingeben:"); 
 scanf("%i", &n);
-if(n<=1) printf("Diese Zahl ist nicht größer als 1\n");
+if(n<=1){ 
+	printf("Diese Zahl ist nicht größer als 1\n");
+	return -1	
+}
 int* A = malloc(sizeof(int)*n+1);
 if(A==NULL) return -1;
 for(int i=0;i<n+1;i++) A[i]=0;
