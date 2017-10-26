@@ -30,7 +30,7 @@ int main(void){
     printf("Thank you!\n");
 
     printf("\n Computing...\n\n");
-    if (primetest(n)) printf("%i is a prime. \n", n);
+    if (primetest(n)==1) printf("%i is a prime. \n", n);
     else printf("%i is no prime.\n", n);
 
     return EXIT_SUCCESS;
