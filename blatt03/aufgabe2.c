@@ -3,9 +3,6 @@
 
 
 
-double square(double n){
-	return n*n;
-}
 
 double arith_mtl(double* sp, int n){
 	int i;
@@ -19,9 +16,11 @@ double arith_mtl(double* sp, int n){
 
 double varianz(double* sp, int n, double armtl){
 	int i;
+	double squarehelp;
 	double var=0;
 	for(i=0;i<n;i++){
-		var+=square(sp[i]-armtl);
+		squarehelp=sp[i]-armtl;
+		var+=squarehelp*squarehelp;
 	}
 	var=var/(n-1);
 	return var;
