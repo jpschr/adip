@@ -69,14 +69,8 @@ int print_number(int n){
 	}
 	return EXIT_SUCCESS;
 }
-
-int main(){
-	int n;
+int test(){
 	int i;
-	printf("Bitte eine natürliche Zahl zwischen 20 und 69 eingeben:");
-	scanf("%i", &n);
-	print_number(n);
-	
 	printf("-----------TEST-------\n");
 	for(i=20;i<=69;i++){
 	print_number(i);
@@ -84,3 +78,12 @@ int main(){
 	printf("----------------------\n");
 	return EXIT_SUCCESS;
 }
+int main(){
+	int n;
+	printf("Bitte eine natürliche Zahl zwischen 20 und 69 eingeben:");
+	scanf("%i", &n);
+	print_number(n);
+	test();
+	return EXIT_SUCCESS;
+}
+
