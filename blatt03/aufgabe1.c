@@ -10,7 +10,7 @@ void initializegenerator() {
 int karteziehen(){
 	int zufall;
 	do{
-		zufall= rand()%10;
+		zufall= rand()%11;
 	} while(zufall<=1);
 return zufall;
 }
