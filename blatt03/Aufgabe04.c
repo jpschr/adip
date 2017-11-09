@@ -11,7 +11,7 @@ int main(void){
     double sum_oldd, deltad = 0;
 
     int i,n;
-    n = 5; //Number of entries
+    n = 5; /*Number of entries*/
 
     printf("Values to be summarized over:\n");
     for (i=0; i < n; i++){
