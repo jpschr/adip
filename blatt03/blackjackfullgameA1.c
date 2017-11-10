@@ -101,7 +101,8 @@ int gamestart(){       /*gibt 1 bei Sieg, -1 bei Niederlage und 0 bei unentscied
 
 			default:
 
-				printf("ungültige Eingabe!\n");				break;
+				printf("ungültige Eingabe!\n");
+				break;
 		}
 
 	}while(player<21);
