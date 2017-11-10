@@ -23,7 +23,7 @@ int karteziehen(){
     return zufall;
 }
 
-int gamestart(){       /*gibt 1 bei Sieg, -1 bei Niederlage und 0 bei unentscieden zurück*/
+int gamestart(){       /*gibt 1 bei Sieg, -1 bei Niederlage und 0 bei unentscieden zurÃ¼ck*/
 
 	int dealer=0;
 
@@ -101,8 +101,7 @@ int gamestart(){       /*gibt 1 bei Sieg, -1 bei Niederlage und 0 bei unentscied
 
 			default:
 
-				printf("ungültige Eingabe!\n");
-				break;
+				printf("ungÃ¼ltige Eingabe!\n");				break;
 		}
 
 	}while(player<21);
@@ -112,7 +111,7 @@ int gamestart(){       /*gibt 1 bei Sieg, -1 bei Niederlage und 0 bei unentscied
 	return -1;
 }
 
-int again(int bilanz){            /*gibt nebenbei Anzahl der Gesamtrunden zurück*/
+int again(int bilanz){            /*gibt nebenbei Anzahl der Gesamtrunden zurÃ¼ck*/
     int input;
     int runden = 1;
 
@@ -138,20 +137,20 @@ int again(int bilanz){            /*gibt nebenbei Anzahl der Gesamtrunden zurück
 
 			default:
 
-				printf("ungültige Eingabe! Spiel beendet.\n");
+				printf("ungÃ¼ltige Eingabe! Spiel beendet.\n");
                 return runden;
 				break;
 		}
 
 	}while(bilanz>-5);          /*keine weiteren Runden wenn Bilanz zu schlecht ist*/
 
-    printf("Vermutlich solltest du aufhören.\n");
+    printf("Vermutlich solltest du aufhÃ¶ren.\n");
 	return runden;
 }
 
 int main() {
     int bilanz;
-  	initializegenerator();
+    initializegenerator();
 
     printf("BLACKJACK START\n");
     bilanz = gamestart();
