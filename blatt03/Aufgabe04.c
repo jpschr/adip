@@ -18,6 +18,8 @@ int main(void){
         printf("numbersf[%i]: %f  \t\t\t numbersd[%i]: %f \n", i, numbersf[i], i, numbersd[i]);
     }
     printf("\n");
+    printf("\nActual value of sum: 0.000031746031746031746031746031746031746031746031746031746...\n");
+    printf("Also wirtten as (2/63)*10^(-3)\n\n");
 
     printf("Computing sum using floats only... \n");
     for (i = 0; i < n; i++){
