@@ -51,7 +51,7 @@ int gamestart(){       /*gibt 1 bei Sieg, -1 bei Niederlage und 0 bei unentscied
 
 				if(player>21){
 
-                    printf("Aktueller Punktestand: %i\n", player);
+                    			printf("Aktueller Punktestand: %i\n", player);
 					printf("Spieler verliert\n");
 					return -1;
 				}
