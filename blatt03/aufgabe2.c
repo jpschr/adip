@@ -8,7 +8,7 @@ double arith_mtl(double* sp, int n){
 	int i;
 	double armtl=0;
 	for(i=0;i<n;i++){
-	armtl+=sp[i];
+		armtl+=sp[i];
 	}
 	armtl=armtl/n;
 	return armtl;
@@ -39,8 +39,8 @@ int main(){
 	}
 	printf("Bitte die Stichprobe eingeben:\n");
 	for(i=0;i<n;i++){
-	printf("Wert %i von %i:", i+1, n);
-	scanf("%lf", &sp[i]);
+		printf("Wert %i von %i:", i+1, n);
+		scanf("%lf", &sp[i]);
 	}
 	armtl=arith_mtl(sp,n);
 	var=varianz(sp,n,armtl);
