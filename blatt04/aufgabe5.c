@@ -15,7 +15,7 @@ int main() {
     int limit = 0;
 
     initializegenerator();
-    printf("Bitte gib eine sinnvolle Preisgrenze an, sodass du mit den Zahlen noch gut rechnen kannst:\n");     /*Sonst gibt rand() oft unhandlich große Zahlen zurück
+    printf("Bitte gib eine sinnvolle Preisgrenze an, sodass du mit den Zahlen noch gut rechnen kannst:\n");     /*Sonst gibt rand() oft unhandlich große Zahlen zurück*/
     scanf("%i", &limit);
     while(limit<=0){
       printf("Fehler, bitte positive Zahl eingeben\n");
