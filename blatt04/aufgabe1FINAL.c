@@ -71,8 +71,8 @@ int main(){
 		printf("Bitte geben sie eine natürliche Zahl ein: \n");
 		scanf("%i" , &k);
 	}
-	printf("Der Binomialkoeffizient ist: %llu\n", bincoef(n,k));
-	printf("modifiziertes Lottoproblem : %llu\n", lotto(n, k));
+	printf("Der Binomialkoeffizient ist: %lu\n", bincoef(n,k));
+	printf("modifiziertes Lottoproblem : %lu\n", lotto(n, k));
 
 	return EXIT_SUCCESS;
 	
