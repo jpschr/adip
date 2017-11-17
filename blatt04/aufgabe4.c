@@ -12,8 +12,8 @@ int pyth(int n){
 			x = pow(u,2)-pow(v,2);
 			y=2*u*v;
 			z=pow(u,2)+pow(v,2);
-			printf("%i,%i,%i\n",x,y,z);
-			/*printf("%i^2+%i^2=%f+%f=%f\n", a, b, pow(a,2), pow(b,2), pow(a,2)+pow(b,2));*/
+			printf("%i,%i,%i ",x,y,z);
+			if(pow(x,2)+pow(y,2)==pow(z,2)) printf("OK\n"); /*Check if generated numbers really satisfy the condition for pyth-triplets*/
 		}
 	}
 	return EXIT_SUCCESS;
@@ -21,6 +21,6 @@ int pyth(int n){
 
 
 int main(){
-	pyth(20);
+	pyth(100);
 	return EXIT_SUCCESS;
 }

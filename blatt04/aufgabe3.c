@@ -44,6 +44,7 @@ double expf (double x){
 
 int main(){
 	double input=0;
+	printf("Bitte das Funktionsargument eingeben:");
 	scanf("%lf",&input);
 	printf("our    sinus %f\n", sinus(input));
 	printf("math.h sinus %f\n", sin(input));

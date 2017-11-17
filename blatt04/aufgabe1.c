@@ -44,7 +44,7 @@ int test_n_over_k(){
 		printf("Eingabe unzulässig!\n");
 		return EXIT_FAILURE;
 	}
-	printf("n über k ist %i\n", nok);
+	printf("%i über %i ist %i\n", n,k, nok);
 	return EXIT_SUCCESS;
 }
 
@@ -71,7 +71,7 @@ int test_lotto(){
 	}*/
 	lot=lotto(n,k);
 	if(lot==-1){
-		printf("Fehler!");
+		printf("Eingabe unzulässig!");
 		return EXIT_FAILURE;
 	}
 	printf("lotto= %i\n", lot);
@@ -80,8 +80,11 @@ int test_lotto(){
 }
 
 int main(){
+	printf("-----Fakultätsberechnung-----\n");
 	test_fac();
+	printf("-----n über k-----\n");
 	test_n_over_k();
+	printf("-----modifiziertes Lottoproblem-----\n");
 	test_lotto();
 	return EXIT_SUCCESS;
 }
