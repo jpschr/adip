@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*Folgende Funktionen laufen nur auf positiven Zahlen und n >= k, wofür die main und vorrausgehende Funktionen sorgen.*/
-/*In einer Bibliothek sollte man dies aber intern herausfiltern*/
-
 unsigned long fac(int n){
 
 	int i = 0;
@@ -23,6 +20,9 @@ unsigned long fac(int n){
 	
 	return fac;
 }
+
+/*Folgende Funktionen laufen nur auf positiven Zahlen und n >= k, wofür die main und vorrausgehende Funktionen sorgen.*/
+/*In einer Bibliothek sollte man dies aber intern herausfiltern*/
 
 unsigned long fac2(int n, int k){
 
