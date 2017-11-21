@@ -2,6 +2,7 @@
 
 
 int main(void){
+    int strich = 95;
     float numbersf[] = {10000.0, -1.0e-3/9.0, 25.0e2, 1.0e-3/7.0, -12.5e3};
     float sumf = 0;
     float sum_oldf, deltaf = 0;
@@ -11,13 +12,16 @@ int main(void){
     double sum_oldd, deltad = 0;
 
     int i,n;
-    n = 5; //Number of entries
+    n = 5; /*Number of entries*/
 
     printf("Values to be summarized over:\n");
     for (i=0; i < n; i++){
         printf("numbersf[%i]: %f  \t\t\t numbersd[%i]: %f \n", i, numbersf[i], i, numbersd[i]);
     }
     printf("\n");
+    printf("\t\t\t   %c%c%c%c%c%c\n", strich,strich,strich,strich,strich,strich);
+    printf("Actual value of sum: 0.0000317460\n");
+    printf("Also wirtten as (2/63)*10^(-3)\n\n");
 
     printf("Computing sum using floats only... \n");
     for (i = 0; i < n; i++){
@@ -42,6 +46,8 @@ int main(void){
         sum_oldf = sumf;
         sumf += numbersf[i];
         deltaf += numbersf[i] - (sumf - sum_oldf);
+        printf("D is: %f \n", deltaf);
+        sumf += deltaf;
     }
     printf("Smart sum using floats = %f", sumf);
     printf("\n\n");
@@ -53,6 +59,8 @@ int main(void){
         sum_oldd = sumd;
         sumd += numbersd[i];
         deltad += numbersd[i] - (sumd - sum_oldd);
+        printf("D is: %f \n", deltad);
+        sumd += deltad;
     }
     printf("Smart sum using doubles = %f", sumd);
     printf("\n");

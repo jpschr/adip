@@ -10,7 +10,7 @@ void initializegenerator() {
 int karteziehen(){
 	int zufall;
 	do{
-		zufall= rand()%11;
+		zufall= (rand()%9)+2;
 	} while(zufall<=1);
 return zufall;
 }
@@ -29,10 +29,12 @@ int main() {
 			case 1:
 				player+=karteziehen();
 				if(player>21){
+					printf("Aktueller Punktestand: %i\n", player);
 					printf("Spieler verliert\n");
 					return EXIT_SUCCESS;
 				}
 				if(player==21){			/* Verhalten wenn Spieler 21 trifft in Aufgabenstellung unklar */
+					printf("Aktueller Punktestand: %i\n", player);
 					printf("Spieler gewinnt\n");
 					return EXIT_SUCCESS;
 				}
