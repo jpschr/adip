@@ -86,7 +86,7 @@ int main(){
 
 
 	printf("\nGib ein Wort ein:\n");
-	scanf( "%s" , string);
+	scanf( "%99s" , string); /* stop weading from stdin after limit-1 characters so that string + terminating '\0' Byte fits into char array*/
 	printf("\nGib einen Schlüssel ein:\n");
 	scanf( "%i" , &key);
 
