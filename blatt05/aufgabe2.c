@@ -4,50 +4,61 @@
 #include <time.h>
 
 struct DynArray{
-int* array;
-int elements;
-int max_size;
+	int* array;
+	unsigned elements;
+	unsigned max_size;
 };
 
+/* array=NULL, elements=0, max_size=0 is the empty DynArray
+ * array=NULL allowed only if max_size=0
+ * elements<=max_size
+ * array has size of max_size */
+
 struct DynArrayMin{
-int* array;
-int size;
+	int* array;
+	unsigned size;
 };
 
 int dyn_array_add(struct DynArray* dynarray, int new_elem){
 	int* n_array=NULL;
+	/* sanity checks on dynarray */
+	if(NULL==dynarray) return 0;
+	if((NULL==dynarray->array)&&(0!=dynarray->max_size)) return 0;
+	if(dynarray->max_size<dynarray->elements) return 0;
+
 	if(dynarray->elements<dynarray->max_size){
 		dynarray->array[dynarray->elements]=new_elem;
 		dynarray->elements++;
 	}
 	else{						
-		n_array=malloc(2*dynarray->max_size*sizeof(int));
-		if(NULL==n_array){
-			return 0;
-		}else{
-
+		n_array=malloc(((dynarray->max_size>0)?(2*dynarray->max_size):(1))* sizeof(int)); /* condition ? condition_is_true_expression : condition_is_false_expression */
+		if(NULL==n_array) return 0;
+		if(NULL!=dynarray->array){ /* TODO how to negate ==NULL? */
 			memcpy(n_array,dynarray->array, dynarray->max_size*sizeof(int));
 			free(dynarray->array);
-			dynarray->array=n_array;
-			dynarray->max_size*=2;
-			dyn_array_add(dynarray, new_elem);
 		}
+		dynarray->array=n_array;
+		dynarray->max_size=(dynarray->max_size>0)?(2*dynarray->max_size):(1);
+		dyn_array_add(dynarray, new_elem);
 	}
 	return 1;
 }
 
 int dyn_array_min_add(struct DynArrayMin* dynarraymin, int new_elem){
 	int* n_array=NULL;
+	/* sanity checks */
+	if(NULL==dynarraymin) return 0;
+	if(NULL==dynarraymin->array&&0!=dynarraymin->size) return 0;
+
 	n_array=malloc((dynarraymin->size+1)*sizeof(int));
-	if(NULL==n_array){
-		return 0;
-	}else{
+	if(NULL==n_array) return 0;
+	if(NULL!=dynarraymin->array){
 		memcpy(n_array,dynarraymin->array, dynarraymin->size*sizeof(int));
 		free(dynarraymin->array);
-		dynarraymin->array=n_array;
-		dynarraymin->array[dynarraymin->size]=new_elem;
-		dynarraymin->size++;
 	}
+	dynarraymin->array=n_array;
+	dynarraymin->array[dynarraymin->size]=new_elem;
+	dynarraymin->size++;
 	return 1;
 }
 
@@ -92,24 +103,21 @@ void initializegenerator() {
 
 
 
+
 int main(){
 	struct DynArray dynarray;
 	struct DynArrayMin dynarraymin;
 	int i;
 	int test_size=10;
 	/* initialize dynarray */
-	dynarray.max_size=1;
+	dynarray.max_size=0;
 	dynarray.elements=0;
-	dynarray.array=malloc(dynarray.max_size*sizeof(int));
-	if(NULL==dynarray.array) return EXIT_FAILURE;
+	dynarray.array=NULL;
 	/* initialize dynarraymin */
-	/*dynarraymin.size=1;
-	dynarraymin.array=malloc(dynarraymin.size*sizeof(int));
-	if(NULL==dynarraymin.array) return EXIT_FAILURE;
-	dynarraymin.array[0]=rand()%100;*/
 	dynarraymin.size=0;
 	dynarraymin.array=NULL;
 	printf("Test von DynArray\n");
+	dyn_array_print_full(&dynarray);
 	for(i=0;i<test_size;i++){
 		dyn_array_add(&dynarray,rand()%100);
 		dyn_array_print_full(&dynarray);
