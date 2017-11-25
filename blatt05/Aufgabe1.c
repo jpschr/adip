@@ -78,7 +78,7 @@ int main(){
 
 
 	printf("\nGib ein Wort ein:\n");
-	scanf( "%s" , string);
+	scanf( "%199s" , string);
 	printf("\nGib einen Schlüssel ein:\n");
 	scanf( "%i" , &key);
 
