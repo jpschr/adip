@@ -87,7 +87,7 @@ int main(){
 
 	printf("\nGib ein Wort ein:\n");
 	scanf( "%99s" , string); /* stop weading from stdin after limit-1 characters so that string + terminating '\0' Byte fits into char array*/
-	printf("\nGib einen Schlüssel ein:\n");
+	printf("\nGib einen Schluessel ein:\n");
 	scanf( "%i" , &key);
 
 
@@ -98,9 +98,9 @@ int main(){
             printf("Die Eingabe ist ein Palindrom.\n\n");
 	}
 	else printf("Die Eingabe ist kein Palindrom.\n\n");
-	printf("String verschlüsselt:\n");
+	printf("String verschluesselt:\n");
 	printstring(encrypt(string, key));
-	printf("String entschlüsselt:\n");
+	printf("String entschluesselt:\n");
     printstring(decrypt(string, key));
 
     free(string);
