@@ -30,7 +30,7 @@ int dyn_array_add(struct DynArray* dynarray, int new_elem){
 		dynarray->array[dynarray->elements]=new_elem;
 		dynarray->elements++;
 	}
-	else{						
+	else{
 		n_array=malloc(((dynarray->max_size>0)?(2*dynarray->max_size):(1))* sizeof(int)); /* condition ? condition_is_true_expression : condition_is_false_expression */
 		if(NULL==n_array) return 0;
 		if(NULL!=dynarray->array){ /* TODO how to negate ==NULL? */
@@ -89,8 +89,8 @@ void dyn_array_print_full(struct DynArray* dynarray){
 void dyn_array_min_print(struct DynArrayMin* dynarraymin){
 	int i;
 	printf("[");
-	for(i=0;i<dynarraymin->size;i++){	
-		printf("%i, ",dynarraymin->array[i]);	
+	for(i=0;i<dynarraymin->size;i++){
+		printf("%i, ",dynarraymin->array[i]);
 	}
 	printf("]\n");
 }
@@ -118,6 +118,7 @@ int main(){
 	dynarraymin.array=NULL;
 	printf("Test von DynArray\n");
 	dyn_array_print_full(&dynarray);
+	initializegenerator();
 	for(i=0;i<test_size;i++){
 		dyn_array_add(&dynarray,rand()%100);
 		dyn_array_print_full(&dynarray);
