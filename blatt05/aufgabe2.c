@@ -3,23 +3,23 @@
 #include <string.h>
 #include <time.h>
 
-struct DynArray{
+typedef struct DynArray{
 	int* array;
 	unsigned elements;
 	unsigned max_size;
-};
+}DynArray;
 
 /* array=NULL, elements=0, max_size=0 is the empty DynArray
  * array=NULL allowed only if max_size=0
  * elements<=max_size
  * array has size of max_size */
 
-struct DynArrayMin{
+typedef struct DynArrayMin{
 	int* array;
 	unsigned size;
-};
+}DynArrayMin;
 
-int dyn_array_add(struct DynArray* dynarray, int new_elem){
+int dyn_array_add(DynArray* dynarray, int new_elem){
 	int* n_array=NULL;
 	/* sanity checks on dynarray */
 	if(NULL==dynarray) return 0;
@@ -44,7 +44,7 @@ int dyn_array_add(struct DynArray* dynarray, int new_elem){
 	return 1;
 }
 
-int dyn_array_min_add(struct DynArrayMin* dynarraymin, int new_elem){
+int dyn_array_min_add(DynArrayMin* dynarraymin, int new_elem){
 	int* n_array=NULL;
 	/* sanity checks */
 	if(NULL==dynarraymin) return 0;
@@ -62,7 +62,7 @@ int dyn_array_min_add(struct DynArrayMin* dynarraymin, int new_elem){
 	return 1;
 }
 
-void dyn_array_print(struct DynArray* dynarray){
+void dyn_array_print(DynArray* dynarray){
 	int i;
 	printf("[");
 	for(i=0;i<dynarray->elements;i++){
@@ -71,7 +71,7 @@ void dyn_array_print(struct DynArray* dynarray){
 	printf("]i\n");
 }
 
-void dyn_array_print_full(struct DynArray* dynarray){
+void dyn_array_print_full(DynArray* dynarray){
 	int i;
 	printf("[");
 	for(i=0;i<dynarray->elements;i++){
@@ -86,7 +86,7 @@ void dyn_array_print_full(struct DynArray* dynarray){
 	printf("]\n");
 }
 
-void dyn_array_min_print(struct DynArrayMin* dynarraymin){
+void dyn_array_min_print(DynArrayMin* dynarraymin){
 	int i;
 	printf("[");
 	for(i=0;i<dynarraymin->size;i++){
@@ -105,8 +105,8 @@ void initializegenerator() {
 
 
 int main(){
-	struct DynArray dynarray;
-	struct DynArrayMin dynarraymin;
+	DynArray dynarray;
+	DynArrayMin dynarraymin;
 	int i;
 	int test_size=10;
 	/* initialize dynarray */
