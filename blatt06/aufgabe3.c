@@ -8,6 +8,14 @@ typedef struct student{
 	int matrikelnummer;
 }student;
 
+/* Diese Funktion 'leert' den Eingabebuffer. */
+void clear_input_buffer(void) {
+    char ch = 0;
+    while(ch != '\n')
+        ch = getchar();
+}
+
+
 /*Dateneingabe für neuen Student*/
 void new_student(student *new_student){
     int z = 0;
@@ -16,18 +24,22 @@ void new_student(student *new_student){
 	while (new_student->vorname[z] != '\n'){
         z++;
 	}
+	clear_input_buffer();
 	new_student->vorname[z] = '\0';
 	printf("Nachname: ");
 	fgets(new_student->nachname,30,stdin);
 	while (new_student->nachname[z] != '\n'){
         z++;
 	}
+	clear_input_buffer();
 	new_student->nachname[z] = '\0';
 	new_student->matrikelnummer = -1;
 	while(new_student->matrikelnummer < 0){
 		printf("Matrikelnummer: ");
 		scanf("%i", &new_student->matrikelnummer);
 	}
+	clear_input_buffer();
+
 }
 
 /*Ausgabe eines Studenten*/
