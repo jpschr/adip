@@ -147,7 +147,7 @@ int main(){
 	int max = 2;
 	int num_stu = 0;
 	
-	many_students = malloc(num_stu * sizeof(student *));
+	many_students = malloc(max * sizeof(student *));
 	if(many_students == NULL) return EXIT_FAILURE;
 	
 	for(i = 0; i < max; i++){
