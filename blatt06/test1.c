@@ -42,7 +42,6 @@ matrix createMatrix(int m, int n){
 void printMatrix(matrix* matrix_a){
     int i,j;
 
-    printf("\t%i \n\n", matrix_a->m);
 
     for (i=0; i < matrix_a->m; i++){
         for (j=0; j < matrix_a->n; j++){
@@ -56,23 +55,18 @@ void printMatrix(matrix* matrix_a){
 void randomizeMatrix(matrix* matrix_a){
     int i,j;
 
-    printf("\t%i \n\n", matrix_a->m);
-
     srand(time(NULL));
     for (i=0; i < matrix_a->m; i++){
         for (j=0; j < matrix_a->n; j++){
                 matrix_a->zeilen[i][j] = rand() % 9;
-                /*printf("\t%i", matrix_a->zeilen[i][j]);*/
         }
-        /*printf("\n");*/
+        
     }
-    /*printf("\n");*/
+
 }
 
 int matrixMultiplikation(matrix* matrix_a, matrix* matrix_b, matrix* matrix_c){
     int i,j,k;
-
-    printf("\t%i \n\n", matrix_a->m);
 
     if (matrix_a->n == matrix_b->m){
         for (i=0; i < matrix_a->m; i++){
@@ -81,19 +75,24 @@ int matrixMultiplikation(matrix* matrix_a, matrix* matrix_b, matrix* matrix_c){
                             matrix_c->zeilen[i][j] += matrix_a->zeilen[i][k] * matrix_b->zeilen[k][j];
                         }
                 }
-            printf("\n");
         }
-        printf("\n");
         return 1;
     } else{
         return 0;
     }
 }
 
+void free_matrix(matrix* matrix_a){
+	int i;
+	for(i = 0; i < matrix_a->m; i++){
+		free(matrix_a->zeilen[i]);
+	}
+	free(matrix_a->zeilen);
+}
 /* START HERE */
 
 int main(void){
-    int m=2, n=4, o=3, p=4;
+    int m=5, n=3, o=3, p=4;
     matrix matrix_a;
     matrix matrix_b;
     matrix matrix_c;
@@ -119,7 +118,11 @@ int main(void){
     } else {
         printf("Matrizen erfuellen nicht die Bedingungen an die Matrixmultiplikation. \n");
     }
-
+	
+	free_matrix(&matrix_a);
+	free_matrix(&matrix_b);
+	free_matrix(&matrix_c);
+	
 
     return EXIT_SUCCESS;
 }
