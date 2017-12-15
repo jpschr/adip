@@ -45,7 +45,7 @@ void print_students(student **many, int max){
 	if(many == NULL) return;
 	for(i = 0; i < max; i++){
 		if(many[i] != NULL){
-			many[i] = malloc(sizeof(student));
+			/*many[i] = malloc(sizeof(student));*/
 			if(many[i] == NULL) return; 
 			print_student(many[i]);
 		}
@@ -75,7 +75,6 @@ void get_name(student **many, int matrikel, int max){
 		if(many[i] ==  NULL) continue;
 		if(many[i]->matrikelnummer == matrikel){
 			exist = 1;
-			printf("Exists: %i", exist);
 			printf("Der Student mit Matrikelnummer %i heißt: ", matrikel);
 			while(many[i]->vorname[j] != '\0'){
 				printf("%c", many[i]->vorname[j]);
@@ -98,7 +97,6 @@ void get_name(student **many, int matrikel, int max){
 /*Einfügen eines Studenten an eine freie Stelle*/
 void add_student(student **many, int *num, int max){
 	int i;
-	student stdnt;
 	
 	if(many == NULL) return;
 	if(*num == max){
@@ -108,7 +106,7 @@ void add_student(student **many, int *num, int max){
 	/*Hier wird nach freier Stelle gesucht, da möglicherweise die Liste nicht "ordentlich" befüllt*/
 	for(i = 0; i < max; i++){
 		if(many[i] == NULL){
-			many[i]=&stdnt;
+			many[i]=malloc(sizeof(student));
 			new_student(many[i]);
 			*num += 1;
 			break;
@@ -124,7 +122,7 @@ void remove_student(student **many, int max, int matrikel, int *num){
 	if(many == NULL) return;
 	
 	for(i = 0; i < max; i++){
-		if((many[i] != NULL) & (many[i]->matrikelnummer == matrikel)){
+		if((many[i] != NULL) && (many[i]->matrikelnummer == matrikel)){
 			exist = 1;
 			free(many[i]);
 			many[i] = NULL;
@@ -160,11 +158,11 @@ int main(){
 	
 	add_student(many_students, &num_stu, max);
 	get_name(many_students, 42, max);
-	add_student(many_students, &num_stu, max);
-	remove_student(many_students, max, 42, &num_stu);
+	/*add_student(many_students, &num_stu, max);*/
+	/*remove_student(many_students, max, 2, &num_stu);*/
 	print_students(many_students, max);
-	clear_students(many_students, max, &num_stu);
-	print_students(many_students, max);
+	/*clear_students(many_students, max, &num_stu);
+	print_students(many_students, max);*/
 	
 	free(many_students);
 	return EXIT_SUCCESS;
