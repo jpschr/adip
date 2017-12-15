@@ -23,18 +23,10 @@ void new_student(student *new_student){
 
 /*Ausgabe eines Studenten*/
 void print_student(student *stdnt){
-	int i = 0;
 	
-	while(stdnt->vorname[i] != '\0'){
-		printf("%c", stdnt->vorname[i]);
-		++i;
-	}
-	i = 0;
+	printf("%s", stdnt->vorname);
 	printf(" ");
-	while(stdnt->nachname[i] != '\0'){
-		printf("%c", stdnt->nachname[i]);
-		++i;
-	}
+	printf("%s", stdnt->nachname);
 	printf(", %i\n", stdnt->matrikelnummer);
 }
 
@@ -67,7 +59,6 @@ void clear_students(student **many, int max, int* num){
 /*Suche nach Student mit bestimmter Matrikelnummer*/
 void get_name(student **many, int matrikel, int max){
 	int i = 0;
-	int j = 0;
 	int exist = 0;
 	
 	if(many == NULL) return;
@@ -76,16 +67,9 @@ void get_name(student **many, int matrikel, int max){
 		if(many[i]->matrikelnummer == matrikel){
 			exist = 1;
 			printf("Der Student mit Matrikelnummer %i heißt: ", matrikel);
-			while(many[i]->vorname[j] != '\0'){
-				printf("%c", many[i]->vorname[j]);
-				++j;
-			}
-			j = 0;
+			printf("%s", many[i]->vorname);
 			printf(" ");
-			while(many[i]->nachname[j] != '\0'){
-				printf("%c", many[i]->nachname[j]);
-				++j;
-			}
+			printf("%s", many[i]->nachname);
 			printf("\n");
 		}
 	}
@@ -158,11 +142,11 @@ int main(){
 	
 	add_student(many_students, &num_stu, max);
 	get_name(many_students, 42, max);
-	/*add_student(many_students, &num_stu, max);*/
-	/*remove_student(many_students, max, 2, &num_stu);*/
+	add_student(many_students, &num_stu, max);
+	remove_student(many_students, max, 2, &num_stu);
 	print_students(many_students, max);
-	/*clear_students(many_students, max, &num_stu);
-	print_students(many_students, max);*/
+	clear_students(many_students, max, &num_stu);
+	print_students(many_students, max);
 	
 	free(many_students);
 	return EXIT_SUCCESS;
