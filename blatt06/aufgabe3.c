@@ -28,6 +28,7 @@ void new_student(student *new_student){
 	new_student->vorname[z] = '\0';
 	printf("Nachname: ");
 	fgets(new_student->nachname,30,stdin);
+	/* Deleting LF */
 	while (new_student->nachname[z] != '\n'){
         z++;
 	}
@@ -53,16 +54,19 @@ void print_student(student *stdnt){
 
 /*Ausgabe aller gespeicherten Studenten*/
 void print_students(student **many, int max){
+    int empty = 1;
 	int i = 0;
 
 	if(many == NULL) return;
 	for(i = 0; i < max; i++){
 		if(many[i] != NULL){
+            empty = 0;
 			/*many[i] = malloc(sizeof(student));*/
 			if(many[i] == NULL) return;
 			print_student(many[i]);
 		}
 	}
+	if (empty) printf("\nNo more records of students.\n");
 }
 
 /*Zurücksetzen der Liste von studenten*/
@@ -163,9 +167,12 @@ int main(){
 
 	add_student(many_students, &num_stu, max);
 	get_name(many_students, 42, max);
+
 	add_student(many_students, &num_stu, max);
-	remove_student(many_students, max, 2, &num_stu);
+
+	remove_student(many_students, max, 42, &num_stu);
 	print_students(many_students, max);
+
 	clear_students(many_students, max, &num_stu);
 	print_students(many_students, max);
 
