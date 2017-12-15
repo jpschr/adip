@@ -7,9 +7,7 @@ typedef struct matrix{
     /*  Zeilen ist ein Array mit Verweisen auf die jeweiligen Arrays mit den Zeileneintraegen (Elemente oder auch Eintraege unserer Matrix)
         Also korrespondiert Index von Zeilen mit dem Zeilenindex i < m (Index beginnt bei 0)
         und der Index j von Zeileneintraege respektive Zeilen[i] mit der Spaltennummer j < n (Index beginnt bei 0) eines Elements.
-
         Zugriff Auf das Element i,j der Matrix mit Matrix[i,j];
-
         m ist die Zeielenanzahl der Matrix
         n ist die Spaltenzahl der Matrix
     */
@@ -22,7 +20,7 @@ typedef struct matrix{
 
 /*  Functions and procedures */
 
-matrix* createMatrix(int m, int n){
+matrix createMatrix(int m, int n){
     int i,j;
     matrix fertigeMatrix;
 
@@ -38,7 +36,7 @@ matrix* createMatrix(int m, int n){
         }
     }
 
-    return &fertigeMatrix;
+    return fertigeMatrix;
 }
 
 void printMatrix(matrix* matrix_a){
@@ -64,11 +62,11 @@ void randomizeMatrix(matrix* matrix_a){
     for (i=0; i < matrix_a->m; i++){
         for (j=0; j < matrix_a->n; j++){
                 matrix_a->zeilen[i][j] = rand() % 9;
-                printf("\t%i", matrix_a->zeilen[i][j]);
+                /*printf("\t%i", matrix_a->zeilen[i][j]);*/
         }
-        printf("\n");
+        /*printf("\n");*/
     }
-    printf("\n");
+    /*printf("\n");*/
 }
 
 int matrixMultiplikation(matrix* matrix_a, matrix* matrix_b, matrix* matrix_c){
@@ -80,7 +78,7 @@ int matrixMultiplikation(matrix* matrix_a, matrix* matrix_b, matrix* matrix_c){
         for (i=0; i < matrix_a->m; i++){
                 for (j=0; j < matrix_b->n; j++){
                         for (k=0; k < matrix_a->n; k++){
-                            matrix_c->zeilen[i][j] += matrix_c->zeilen[i][k] * matrix_c->zeilen[k][j];
+                            matrix_c->zeilen[i][j] += matrix_a->zeilen[i][k] * matrix_b->zeilen[k][j];
                         }
                 }
             printf("\n");
@@ -95,29 +93,29 @@ int matrixMultiplikation(matrix* matrix_a, matrix* matrix_b, matrix* matrix_c){
 /* START HERE */
 
 int main(void){
-    int m=2, n=2, o=2, p=2;
-    matrix* matrix_a;
-    matrix* matrix_b;
-    matrix* matrix_c;
+    int m=2, n=4, o=3, p=4;
+    matrix matrix_a;
+    matrix matrix_b;
+    matrix matrix_c;
     /* Solche Deklarationen muessen in einzelne Zeilen bei structs, da sonst Fehler bei Zuweisungen */
 
     matrix_a = createMatrix(m, n);
     matrix_b = createMatrix(o, p);
     matrix_c = createMatrix(m, p);
 
-    randomizeMatrix(matrix_a);
-    randomizeMatrix(matrix_b);
+    randomizeMatrix(&matrix_a);
+    randomizeMatrix(&matrix_b);
 
     printf("Die Matrizen lauten:\n");
     printf("\n A: \n");
-    printMatrix(matrix_a);
+    printMatrix(&matrix_a);
     printf("\n B: \n");
-    printMatrix(matrix_b);
+    printMatrix(&matrix_b);
     printf("\n \n");
 
-    if (matrixMultiplikation(matrix_a, matrix_b, matrix_c)) {
+    if (matrixMultiplikation(&matrix_a, &matrix_b, &matrix_c)) {
         printf("Resultat der Multiplikation der Matrizen A und B lautet \n");
-        printMatrix(matrix_c);
+        printMatrix(&matrix_c);
     } else {
         printf("Matrizen erfuellen nicht die Bedingungen an die Matrixmultiplikation. \n");
     }
