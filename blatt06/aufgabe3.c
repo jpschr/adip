@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct{
+typedef struct student{
 	char vorname[30];
 	char nachname[30];
 	int matrikelnummer;
@@ -11,9 +11,9 @@ typedef struct{
 /*Dateneingabe für neuen Student*/
 void new_student(student *new_student){
 	printf("Vorname: ");
-	scanf("%s", new_student->vorname);
+	fgets(new_student->vorname,30,stdin);
 	printf("Nachname: ");
-	scanf("%s", new_student->nachname);
+	fgets(new_student->nachname,30,stdin);
 	new_student->matrikelnummer = -1;
 	while(new_student->matrikelnummer < 0){
 		printf("Matrikelnummer: ");
@@ -65,15 +65,17 @@ void clear_students(student **many, int max, int* num){
 }
 
 /*Suche nach Student mit bestimmter Matrikelnummer*/
-void get_name(student **many, int matrikel, int num){
+void get_name(student **many, int matrikel, int max){
 	int i = 0;
 	int j = 0;
 	int exist = 0;
 	
 	if(many == NULL) return;
-	for(i = 0; i < num; i++){
-		if((many[i] != NULL) & (many[i]->matrikelnummer == matrikel)){
+	for(i = 0; i < max; i++){
+		if(many[i] ==  NULL) continue;
+		if(many[i]->matrikelnummer == matrikel){
 			exist = 1;
+			printf("Exists: %i", exist);
 			printf("Der Student mit Matrikelnummer %i heißt: ", matrikel);
 			while(many[i]->vorname[j] != '\0'){
 				printf("%c", many[i]->vorname[j]);
@@ -89,13 +91,14 @@ void get_name(student **many, int matrikel, int num){
 		}
 	}
 	if(exist == 0){
-		printf("Es gibt keinen Student mit der Matrikelnummer: %i", matrikel);
+		printf("Es gibt keinen Student mit der Matrikelnummer: %i\n", matrikel);
 	}
 }
 
 /*Einfügen eines Studenten an eine freie Stelle*/
 void add_student(student **many, int *num, int max){
 	int i;
+	student stdnt;
 	
 	if(many == NULL) return;
 	if(*num == max){
@@ -105,6 +108,7 @@ void add_student(student **many, int *num, int max){
 	/*Hier wird nach freier Stelle gesucht, da möglicherweise die Liste nicht "ordentlich" befüllt*/
 	for(i = 0; i < max; i++){
 		if(many[i] == NULL){
+			many[i]=&stdnt;
 			new_student(many[i]);
 			*num += 1;
 			break;
