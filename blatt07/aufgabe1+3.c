@@ -35,7 +35,25 @@ dnode *insert(dnode *h, int i, double c)
 	return h;
 }
 
-dnode *insertlst(dnode *n, double c) { return insert(n, INT_MAX, c); }
+dnode *insertlst(dnode *head, double c) 
+{ 
+	int counter = 1;
+	dnode *curr;
+	if(head == NULL)
+	{
+		return insert(n, 1, c);
+	}
+	else
+	{
+		curr = head;
+		while(curr->n != NULL)
+		{
+			curr = curr->n;
+			++counter;
+		}
+		return insert(head, ++counter, c); 
+	}
+}
 
 dnode *insertfrst(dnode *n, double c) { return insert(n, 1, c); }
 
@@ -105,6 +123,18 @@ int isempty(stack *h) { return h ? 0 : 1; }
 
 int main()
 {
+	dnode *head[10];
+	head[0] = malloc(sizeof(dnode));
+	head[0]->n = NULL;
+	head[0]->d = 1;
+	
+	for(int i = 1; i<11; i++){
+		head[i] = insertfrst(head[i-1], (1.0/i)*1.25);
+	}
+	dnode *new;
+	new = insertlst(head[10], 20);
+	printlist(head[10]);
+	
 	stack *s=NULL;
 	push(&s,4);
 	push(&s,2);
@@ -117,6 +147,7 @@ int main()
 	printf("%d\n", pop(&s));
 	printf("%d\n", pop(&s));
 	printf("%s\n", isempty(s) ? ("true") : ("false"));
+	return EXIT_SUCCESS;
 }
 
 
