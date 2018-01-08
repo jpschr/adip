@@ -58,7 +58,7 @@ dnode *reverse(dnode *h)
 		nxt = curr->n;
 		curr->n = prev;
 		prev = curr;
-		if(nxt=NULL) return curr;
+		if(nxt==NULL) return curr;
 		curr = nxt;
 	}
 }
