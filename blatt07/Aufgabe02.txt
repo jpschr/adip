@@ -1,0 +1,9 @@
+Aufgabe02:
+
+worst-case-Laufzeiten ( (O(f)) ):
+
+Funktion:		Laufzeit mit Pointer auf Head:		Laufzeit mit Pointer auf Head und Tail:
+insertFirst		O(1)								O(1)
+insertLast		O(n)								O(1)
+insertSorted	O(n)								O(n)
+reverseList		O(n)								O(n)
